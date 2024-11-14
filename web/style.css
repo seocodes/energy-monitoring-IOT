@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.reading {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.reading-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    display: flex;
+}
+
+.reading-label {
+    color: #7f8c8d;
+    font-size: 16px;
+}
+
+.show-values{
+    display: flex;
+    flex-direction: row;
+}
+
+.metric{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    font-size: 22px;
+    color: #2c3e50;
+}
+
+h1, h3 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.status {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.connected {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.disconnected {
+    background-color: #f8d7da;
+    color: #721c24;
+}

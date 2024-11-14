@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Energia</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Monitor de Energia em Tempo Real</h1>
+        <h3>Feito por Augusto e Ivan</h3>
+        <div class="reading">
+            <div>
+                <div class="reading-label">Tensão</div>
+                <div class="show-values">
+                    <div id="tension" class="reading-value">--</div>
+                    <div class="metric"><strong>V</strong></div>
+                </div>         
+            </div>
+        </div>
+
+        <div class="reading">
+            <div>
+                <div class="reading-label">Corrente</div>
+                <div class="show-values">
+                    <div id="current" class="reading-value">--</div>
+                    <div class="metric"><strong>A</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="status" class="status">Conectando ao servidor...</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
