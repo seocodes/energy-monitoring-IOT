@@ -20,19 +20,26 @@ function atualizarDados(dados) {
     // Elementos da interface
     const tensaoElemento = document.getElementById('tension');
     const correnteElemento = document.getElementById('current');
+    const potenciaElemento = document.getElementById('potencia');
     const statusElemento = document.getElementById('status');
 
     // Atualizar valores
-    if (dados.Tension) {
-        tensaoElemento.textContent = dados.Tension.toFixed(2);
+    if (dados.Tensao) {
+        tensaoElemento.textContent = dados.Tensao.toFixed(2);
     } else {
         tensaoElemento.textContent = '--';
     }
 
-    if (dados.Current) {
-        correnteElemento.textContent = dados.Current.toFixed(2);
+    if (dados.Corrente) {
+        correnteElemento.textContent = dados.Corrente.toFixed(2);
     } else {
         correnteElemento.textContent = '--';
+    }
+
+    if (dados.Potencia) {
+        potenciaElemento.textContent = dados.Potencia.toFixed(2);
+    } else {
+        potenciaElemento.textContent = '--';
     }
 
     // Atualizar status
