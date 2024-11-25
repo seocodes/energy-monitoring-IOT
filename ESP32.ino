@@ -28,9 +28,9 @@ FirebaseConfig config;
 unsigned long ultimaVerificacaoWiFi = 0;
 unsigned long ultimaLeituraSensores = 0;
 unsigned long ultimaAtualizacaoTela = 0;
-const long intervaloReconexaoWiFi = 1000;  // Intervalo para tentar reconectar o Wi-Fi (1 segundo)
-const long intervaloLeituraSensores = 2000;    // Intervalo para ler os sensores (2 segundos)
-const long intervaloAtualizacaoTela = 2500; // Intervalo para atualizar o display (2.5 segundos)
+const long intervaloReconexaoWiFi = 1000;  
+const long intervaloLeituraSensores = 2000;    
+const long intervaloAtualizacaoTela = 2500; 
 
 // Variáveis globais para armazenar os dados
 float tensao = 0;
@@ -74,14 +74,12 @@ void setup() {
 }
 
 void loop() {
-  // Leitura dos sensores a cada 'intervaloLeituraSensores' milissegundos
   if (millis() - ultimaLeituraSensores >= intervaloLeituraSensores) {
     ultimaLeituraSensores = millis();
 
     int valorSensorCorrente = analogRead(pinoSensorCorrente);
     int valorSensorTensao = analogRead(pinoSensorTensao);
     
-    // Cálculo da tensão
     tensao = valorSensorTensao * (3.3 / 4095);
     tensao = tensao - 1.65;
     tensao = tensao * 220.0;
@@ -92,16 +90,13 @@ void loop() {
       tensao = 0; 
     }
     
-    // Cálculo da corrente
     corrente = valorSensorCorrente * (3.3 / 4095);
     corrente = corrente - 1.65;
     corrente = corrente * 5.0;
     corrente = abs(corrente);
     
-    // Cálculo da potência
     potencia = (tensao * corrente)/1000;
 
-    // Exibição no Serial Monitor
     Serial.print("Tensão: ");
     Serial.print(tensao);
     Serial.println("V");
@@ -112,7 +107,6 @@ void loop() {
     Serial.print(potencia);
     Serial.println("kW");
 
-    // Envio de dados para o Firebase
     FirebaseJson json;
     json.set("/Tensao", tensao);
     json.set("/Corrente", corrente);
@@ -125,7 +119,6 @@ void loop() {
     }
   }
 
-  // Atualização do display a cada 'intervaloAtualizacaoTela' milissegundos
   if (millis() - ultimaAtualizacaoTela >= intervaloAtualizacaoTela) {
     ultimaAtualizacaoTela = millis(); 
     display.clearDisplay();
