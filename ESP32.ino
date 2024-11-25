@@ -24,7 +24,6 @@ FirebaseData fbdo;
 FirebaseAuth auth;
 FirebaseConfig config;
 
-// Variáveis para controle de tempo
 unsigned long ultimaVerificacaoWiFi = 0;
 unsigned long ultimaLeituraSensores = 0;
 unsigned long ultimaAtualizacaoTela = 0;
@@ -32,7 +31,6 @@ const long intervaloReconexaoWiFi = 1000;
 const long intervaloLeituraSensores = 2000;    
 const long intervaloAtualizacaoTela = 2500; 
 
-// Variáveis globais para armazenar os dados
 float tensao = 0;
 float corrente = 0;
 float potencia = 0;
@@ -42,18 +40,18 @@ void setup() {
   pinMode(pinoSensorCorrente, INPUT);
   pinMode(pinoSensorTensao, INPUT);
 
-  // Conexão Wi-Fi
+
   WiFi.mode(WIFI_STA);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);  
 
-  // Aguardar conexão Wi-Fi
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(3000);
     Serial.print("."); 
   }
   Serial.println("Conectado ao WiFi!");
 
-  // Configuração do Firebase
+
   auth.user.email = EMAIL_USUARIO;
   auth.user.password = SENHA_USUARIO;
   config.api_key = FIREBASE_AUTH;
@@ -66,7 +64,7 @@ void setup() {
     Serial.println("Falha na inicialização do Firebase.");
   }
 
-  // Inicialização do display
+
   display.begin(SSD1306_I2C_ADDRESS, ENDERECO_TELA);
   display.display();
   display.clearDisplay();
