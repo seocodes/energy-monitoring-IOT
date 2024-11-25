@@ -1,4 +1,4 @@
-// Configuração do Firebase
+
 const firebaseConfig = {
     apiKey: "AIzaSyD36ECWmYCzAT0gut4v0o3XLmykE7oZTj0",
     authDomain: "monitoramente-de-energia---iot.firebaseapp.com",
@@ -6,18 +6,17 @@ const firebaseConfig = {
     projectId: "monitoramente-de-energia---iot"
 };
 
-// Inicializar Firebase
+
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 const auth = firebase.auth();
 
-// Credenciais
+
 const email = "azanettev2@gmail.com";
 const password = "galinha";
 
-// Função para atualizar os dados na tela
+
 function atualizarDados(dados) {
-    // Elementos da interface
     const tensaoElemento = document.getElementById('tension');
     const correnteElemento = document.getElementById('current');
     const potenciaElemento = document.getElementById('potencia');
@@ -42,23 +41,21 @@ function atualizarDados(dados) {
         potenciaElemento.textContent = '--';
     }
 
-    // Atualizar status
     statusElemento.textContent = 'Conectado e recebendo dados';
     statusElemento.className = 'status connected';
 }
 
-// Função para tratar erros
 function mostrarErro(mensagem) {
     const statusElemento = document.getElementById('status');
     statusElemento.textContent = 'Erro: ' + mensagem;
     statusElemento.className = 'status disconnected';
 }
 
-// Função para iniciar monitoramento dos dados
+
 function iniciarMonitoramento() {
     const sensorRef = database.ref('Sensor');
 
-    // Monitorar mudanças nos dados
+
     sensorRef.on('value', function(snapshot) {
         const dados = snapshot.val();
         if (dados) {
@@ -69,7 +66,6 @@ function iniciarMonitoramento() {
         mostrarErro(erro.message);
     });
 
-    // Monitorar estado da conexão
     const connectedRef = database.ref('.info/connected');
     connectedRef.on('value', function(snap) {
         const statusElemento = document.getElementById('status');
@@ -83,7 +79,6 @@ function iniciarMonitoramento() {
     });
 }
 
-// Fazer login e iniciar aplicação
 auth.signInWithEmailAndPassword(email, password).then(function() {
     console.log('Login realizado com sucesso');
     iniciarMonitoramento();
